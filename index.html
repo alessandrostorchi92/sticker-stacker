@@ -4,8 +4,13 @@
 <head>
 
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <meta name="description" content="Realization of the tris game">
+    <meta name="description" content="Development of the sticker stacker game">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Bungee+Spice&family=Kalnia:wght@500&family=Montserrat:wght@600&display=swap" rel="stylesheet">
 
     <!-- Custom Css -->
     <link rel="stylesheet" href="css/style.css">
@@ -18,8 +23,44 @@
 
 <body>
 
+    <header class="game-panel">
+
+        <!-- Game Title -->
+        <div class="title-container">
+            <h1 class="title-game">STICKER STACKER</h1>
+        </div>
+        
+    
+        <!-- Counter Score -->
+        <div class="score-container">
+            <div class="counter-score">0000</div>
+        </div>
+
+    </header>
+
+    <main class="game-board">
+
+        <!-- Game board container -->
+        <div class="sticker-stacker-grid-container">
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+            <div class="cell"></div>
+        </div>
+    
+        <!-- Stack Button -->
+        <div class="stack-btn-container">
+            <button class="stack-btn">STACK</button>
+        </div>
+
+    </main>
+
     <!-- Javascript -->
-    <script src="js/main.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>
