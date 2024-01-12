@@ -24,9 +24,11 @@ body {
 
 .counter-score {
     font-size: 3rem;
+    font-weight:lighter;
+    color: #CBE0DD;
 }
 
-.game-board {
+#game-board {
     width: calc((50px * 8) + 4px);
     margin: auto;
 }
@@ -35,17 +37,37 @@ body {
     width: calc((50px * 8) + 4px);
     display: flex;
     flex-wrap: wrap;
+    border: 2px solid black;
     margin-bottom: 10px;
 }
 
 .cell {
     width: 50px;
     height: 50px;
-    border: 1px solid black;
 }
 
-button {
+.cell-dark {
+    background-color: #CBE0DD;
+}
+
+.bar {
+    background-color: #f1754e;
+    border: 2px solid #001732;
+    border-radius: 10px;
+}
+
+.stack-btn {
     width: 100%;
+    font-weight:bold;
+    font-size: 1rem;
     cursor: pointer;
+    border: 2px solid #001732;
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+
+.stack-btn:hover {
+    background-color: #f1754e;
+    color: whitesmoke;
 }
 
