@@ -39,9 +39,6 @@ let barDirection = "right";
  * This function draws the grid of the sticker stacker game
  */
 
-//* Invocation and declaration of the function draw()
-draw();
-
 function draw() {
 
     gridGame.innerHTML = "";
@@ -144,4 +141,14 @@ function moveBar() {
         
     }
 }
+
+function main() {
+    //* Invocation of the function moveBar()
+    moveBar();
+
+    //* Invocation of the function draw()
+    draw();
+}
+
+setInterval(main, 1000);
 
