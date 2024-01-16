@@ -7,6 +7,12 @@
 const gridGame = document.querySelector(".sticker-stacker-grid-container");
 
 /**
+ * @type {HTMLButtonElement}
+ */
+// @ts-ignore
+const stackBtn = document.querySelector(".stack-btn");
+
+/**
  * @type {number[][]}
  */
 const gridMatrix = [
@@ -32,6 +38,11 @@ let currentRowIndex = gridMatrix.length - 1;
  * @type {string}
  */
 let barDirection = "right";
+
+/**
+ * @type {number}
+ */
+let barSize = 3;
 
 // TODO: Implementation of the sticker stacker grid
 
@@ -67,7 +78,7 @@ function draw() {
         });
 
     });
-}
+};
 
 // TODO: Updating of the movement of the orange bar inside the rows of the sticker stacker grid
 
@@ -102,7 +113,7 @@ function moveBarLeft(currentRow) {
 function isRightEdge(currentRow) {
     const lastElement = currentRow[currentRow.length - 1];
     return lastElement === 1;
-}
+};
 
 /**
  * This function sets up if the orange bar reaches the left edge of the current row of the matrix grid
@@ -112,7 +123,7 @@ function isRightEdge(currentRow) {
 function isLeftEdge(currentRow) {
     const firstElement = currentRow[0];
     return firstElement === 1;
-}
+};
 
 /**
  * This function handles the movement of the orange bar both on the right and the left.
@@ -140,15 +151,25 @@ function moveBar() {
         }
         
     }
-}
+};
 
 function main() {
-    //* Invocation of the function moveBar()
     moveBar();
-
-    //* Invocation of the function draw()
     draw();
+};
+
+draw();
+
+// TODO: Updating of the orange bar on the previous row of the sticker stacker grid and setting of victory and defeat conditions
+
+function onStack() {
+    currentRowIndex--;
+    barDirection = "right";
+    for(let i = 0; i < barSize; i++){
+        gridMatrix[currentRowIndex][i] = 1;
+    }
 }
+stackBtn.addEventListener("click", onStack);
 
 setInterval(main, 1000);
 
