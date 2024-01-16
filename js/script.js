@@ -162,13 +162,58 @@ draw();
 
 // TODO: Updating of the orange bar on the previous row of the sticker stacker grid and setting of victory and defeat conditions
 
+/**
+ * This function sets up when the player loses
+ */
+function checkIfYouLost() {
+    const currentRow = gridMatrix[currentRowIndex];
+    const prevRow = gridMatrix[currentRowIndex + 1];
+
+    if(!prevRow) {
+        return
+    }
+
+    for(let i = 0; i < currentRow.length; i++) {
+
+        if(currentRow[i] === 1 && prevRow[i] === 0) {
+
+            currentRow[i] = 0;
+            barSize--;
+
+        }
+
+        if(barSize === 0){
+            alert("YOU LOST");
+        }
+
+    };
+}
+
+/**
+ * This function sets up when the player wins
+ */
+function checkIfYouWon() {
+
+    if(currentRowIndex === 0) {
+        alert("YOU WON");
+    }
+
+};
+
 function onStack() {
+
+    checkIfYouLost();
+
+    checkIfYouWon();
+
+    //* Change row
     currentRowIndex--;
     barDirection = "right";
     for(let i = 0; i < barSize; i++){
         gridMatrix[currentRowIndex][i] = 1;
     }
-}
+};
+
 stackBtn.addEventListener("click", onStack);
 
 setInterval(main, 1000);
