@@ -44,6 +44,8 @@ let barDirection = "right";
  */
 let barSize = 3;
 
+let timer;
+
 // TODO: Implementation of the sticker stacker grid
 
 /**
@@ -183,6 +185,7 @@ function checkIfYouLost() {
         }
 
         if(barSize === 0){
+            clearInterval(timer);
             alert("YOU LOST");
         }
 
@@ -195,6 +198,7 @@ function checkIfYouLost() {
 function checkIfYouWon() {
 
     if(currentRowIndex === 0) {
+        clearInterval(timer);
         alert("YOU WON");
     }
 
@@ -216,5 +220,5 @@ function onStack() {
 
 stackBtn.addEventListener("click", onStack);
 
-setInterval(main, 1000);
+timer = setInterval(main, 1000);
 
