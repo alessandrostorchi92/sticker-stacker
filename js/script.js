@@ -13,6 +13,24 @@ const gridGame = document.querySelector(".sticker-stacker-grid-container");
 const stackBtn = document.querySelector(".stack-btn");
 
 /**
+ * @type {HTMLDivElement}
+ */
+// @ts-ignore
+const endGameScreen = document.querySelector(".end-game-screen");
+
+/**
+ * @type {HTMLTitleElement}
+ */
+// @ts-ignore
+const endGameText = document.querySelector(".end-game-text");
+
+/**
+ * @type {HTMLButtonElement}
+ */
+// @ts-ignore
+const playAgainBtn = document.querySelector(".play-again-btn");
+
+/**
  * @type {number[][]}
  */
 const gridMatrix = [
@@ -45,6 +63,11 @@ let barDirection = "right";
 let barSize = 3;
 
 let timer;
+
+/**
+ * @type {boolean}
+ */
+let isVictory = false;
 
 // TODO: Implementation of the sticker stacker grid
 
@@ -138,20 +161,20 @@ function moveBar() {
      */
     const currentRowMatrix = gridMatrix[currentRowIndex];
 
-    if(barDirection === "right") {
+    if (barDirection === "right") {
         moveBarRight(currentRowMatrix);
 
-        if(isRightEdge(currentRowMatrix)) {
+        if (isRightEdge(currentRowMatrix)) {
             barDirection = "left";
         }
 
-    } else if(barDirection === "left") {
+    } else if (barDirection === "left") {
         moveBarLeft(currentRowMatrix);
 
-        if(isLeftEdge(currentRowMatrix)) {
+        if (isLeftEdge(currentRowMatrix)) {
             barDirection = "right";
         }
-        
+
     }
 };
 
@@ -171,22 +194,22 @@ function checkIfYouLost() {
     const currentRow = gridMatrix[currentRowIndex];
     const prevRow = gridMatrix[currentRowIndex + 1];
 
-    if(!prevRow) {
+    if (!prevRow) {
         return
     }
 
-    for(let i = 0; i < currentRow.length; i++) {
+    for (let i = 0; i < currentRow.length; i++) {
 
-        if(currentRow[i] === 1 && prevRow[i] === 0) {
+        if (currentRow[i] === 1 && prevRow[i] === 0) {
 
             currentRow[i] = 0;
             barSize--;
 
         }
 
-        if(barSize === 0){
+        if (barSize === 0) {
             clearInterval(timer);
-            alert("YOU LOST");
+            endGame(false);
         }
 
     };
@@ -197,9 +220,9 @@ function checkIfYouLost() {
  */
 function checkIfYouWon() {
 
-    if(currentRowIndex === 0) {
+    if (currentRowIndex === 0) {
         clearInterval(timer);
-        alert("YOU WON");
+        endGame(true);
     }
 
 };
@@ -213,7 +236,7 @@ function onStack() {
     //* Change row
     currentRowIndex--;
     barDirection = "right";
-    for(let i = 0; i < barSize; i++){
+    for (let i = 0; i < barSize; i++) {
         gridMatrix[currentRowIndex][i] = 1;
     }
 };
@@ -222,3 +245,18 @@ stackBtn.addEventListener("click", onStack);
 
 timer = setInterval(main, 1000);
 
+// Funzione per il gameover
+function endGame(isVictory) {
+    if (isVictory) {
+        endGameText.innerHTML = 'You<br>Win<br>🤩';
+        endGameScreen.classList.add('end-game-screen');
+    }
+
+    endGameScreen.classList.remove('hidden');
+};
+
+function playAgain() {
+    location.reload();
+}
+
+playAgainBtn.addEventListener("click", playAgain);

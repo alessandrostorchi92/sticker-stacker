@@ -15,7 +15,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .title-game {
@@ -84,12 +84,14 @@ body {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-    background-color: rgba(241, 117, 78, 0.7);
+    background: linear-gradient(135deg, RGB(240, 158, 0, 0.9), RGB(207, 32, 0, 0.9));
 }
 
 .end-game-text {
-	font-size: 48px;
+    font-family: 'Passion One', sans-serif;
+	font-size: 5rem;
 	line-height: 1.2;
+    color: whitesmoke;
     text-align: center;
     text-transform: uppercase;
 	margin-bottom: 16px;
@@ -101,15 +103,17 @@ body {
 
 .play-again-btn {
 	border: 2px solid rgb(0, 23, 50);
-	font-size: 24px;
-    width: 8rem;
+	font-weight: bold;
+    font-size: 1rem;
+    width: 10rem; 
+    border-radius: 5px;
     padding: 0.5rem;
 	text-transform: uppercase;
 	cursor: pointer;
 }
 
 .play-again-btn:hover {
-    background: linear-gradient(135deg, #0355FF, #141722);
+    background-color: #f1754e;
     color: whitesmoke;
 }
 
