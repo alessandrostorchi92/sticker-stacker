@@ -28,7 +28,7 @@ const endGameText = document.querySelector(".end-game-text");
  * @type {HTMLDivElement}
  */
 // @ts-ignore
-const counterScore = document.querySelector(".counter-score");
+const scoreCounter = document.querySelector(".score-counter");
 
 /**
  * @type {HTMLButtonElement}
@@ -69,11 +69,6 @@ let barDirection = "right";
 let barSize = 3;
 
 let timer;
-
-/**
- * @type {number}
- */
-let score = 0;
 
 /**
  * @type {boolean}
@@ -267,8 +262,8 @@ timer = setInterval(main, 1000);
 // TODO: Realisation of the score system
 
 function updateScore() {
-    score++;
-    counterScore.innerText = score.toString().padStart(2, "0");
+    const maxTotalScore = document.querySelectorAll(".bar");
+    scoreCounter.innerText = maxTotalScore.length.toString().padStart(2, "0");
 }
 
 // TODO: Realisation of the end game screens and the feature of the reload of the page
