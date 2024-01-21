@@ -25,6 +25,12 @@ const endGameScreen = document.querySelector(".end-game-screen");
 const endGameText = document.querySelector(".end-game-text");
 
 /**
+ * @type {HTMLDivElement}
+ */
+// @ts-ignore
+const counterScore = document.querySelector(".counter-score");
+
+/**
  * @type {HTMLButtonElement}
  */
 // @ts-ignore
@@ -63,6 +69,11 @@ let barDirection = "right";
 let barSize = 3;
 
 let timer;
+
+/**
+ * @type {number}
+ */
+let score = 0;
 
 /**
  * @type {boolean}
@@ -227,11 +238,19 @@ function checkIfYouWon() {
 
 };
 
+// TODO: Implementation of the features of the stack button
+
+/**
+ * This function sets up all the features of the stack button
+ */
+
 function onStack() {
 
     checkIfYouLost();
 
     checkIfYouWon();
+
+    updateScore();
 
     //* Change row
     currentRowIndex--;
@@ -245,7 +264,19 @@ stackBtn.addEventListener("click", onStack);
 
 timer = setInterval(main, 1000);
 
-// Funzione per il gameover
+// TODO: Realisation of the score system
+
+function updateScore() {
+    score++;
+    counterScore.innerText = score.toString().padStart(2, "0");
+}
+
+// TODO: Realisation of the end game screens and the feature of the reload of the page
+
+/**
+ * This function handles the apperance of the end game screens at the end of the game
+ */
+
 function endGame(isVictory) {
     if (isVictory) {
         endGameText.innerHTML = 'You<br>Win<br>🤩';
@@ -255,6 +286,9 @@ function endGame(isVictory) {
     endGameScreen.classList.remove('hidden');
 };
 
+/**
+ * This function reloads the page when the player clicks on the play again button
+ */
 function playAgain() {
     location.reload();
 }
