@@ -71,6 +71,11 @@ let barSize = 3;
 let timer;
 
 /**
+ * @type {number}
+ */
+let timeSpeedBar = 1000;
+
+/**
  * @type {boolean}
  */
 let isVictory = false;
@@ -190,6 +195,7 @@ function main() {
 };
 
 draw();
+timer = setInterval(main, timeSpeedBar);
 
 // TODO: Updating of the orange bar on the previous row of the sticker stacker grid and setting of victory and defeat conditions
 
@@ -245,6 +251,8 @@ function onStack() {
 
     checkIfYouWon();
 
+    updateSpeedBar();
+
     updateScore();
 
     //* Change row
@@ -257,10 +265,21 @@ function onStack() {
 
 stackBtn.addEventListener("click", onStack);
 
-timer = setInterval(main, 1000);
+/**
+ * This function sets up the speed of the orange bar every click on the stack button
+ */
+function updateSpeedBar() {
+    clearInterval(timer);
+    timeSpeedBar -= 100;
+    timer = setInterval(main, timeSpeedBar);
+    console.log(timeSpeedBar);
+}
 
 // TODO: Realisation of the score system
 
+/**
+ * This function manages the score of the game
+ */
 function updateScore() {
     const maxTotalScore = document.querySelectorAll(".bar");
     scoreCounter.innerText = maxTotalScore.length.toString().padStart(2, "0");
