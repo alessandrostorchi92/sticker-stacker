@@ -233,8 +233,8 @@ function checkIfYouLost() {
 function checkIfYouWon() {
 
     if (currentRowIndex === 0) {
-        clearInterval(timer);
         endGame(true);
+        clearInterval(timer);
     }
 
 };
@@ -257,10 +257,16 @@ function onStack() {
 
     //* Change row
     currentRowIndex--;
-    barDirection = "right";
-    for (let i = 0; i < barSize; i++) {
-        gridMatrix[currentRowIndex][i] = 1;
+
+    if (Array.isArray(gridMatrix[currentRowIndex])) {
+        barDirection = "right";
+
+        for (let i = 0; i < barSize; i++) {
+            gridMatrix[currentRowIndex][i] = 1;
+        }
+
     }
+
 };
 
 stackBtn.addEventListener("click", onStack);
@@ -270,9 +276,13 @@ stackBtn.addEventListener("click", onStack);
  */
 function updateSpeedBar() {
     clearInterval(timer);
-    timeSpeedBar -= 100;
+    timeSpeedBar -= 50;
     timer = setInterval(main, timeSpeedBar);
-    console.log(timeSpeedBar);
+    //? console.log(timeSpeedBar); OK!
+
+    if (currentRowIndex === 0) {
+        clearInterval(timer);
+    }
 }
 
 // TODO: Realisation of the score system
