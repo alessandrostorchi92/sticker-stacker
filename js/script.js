@@ -126,7 +126,7 @@ function draw() {
 function moveBarRight(currentRow) {
     currentRow.pop();
     currentRow.unshift(0);
-    console.log(currentRow);
+    //? console.log(currentRow); OK!
 };
 
 /**
@@ -137,7 +137,7 @@ function moveBarRight(currentRow) {
 function moveBarLeft(currentRow) {
     currentRow.shift();
     currentRow.push(0);
-    console.log(currentRow);
+    //? console.log(currentRow); OK!
 };
 
 /**
@@ -233,8 +233,8 @@ function checkIfYouLost() {
 function checkIfYouWon() {
 
     if (currentRowIndex === 0) {
-        endGame(true);
         clearInterval(timer);
+        endGame(true);
     }
 
 };
