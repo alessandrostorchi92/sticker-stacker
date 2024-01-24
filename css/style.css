@@ -6,26 +6,23 @@
 
 body {
     height: 100vh;
-    max-width: 992px;
-    padding: 1rem;
     background-color: #5296F5;
 }
 
 .title-container,
 .score-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
+    text-align: center;
+    width: 100%;
+    padding: 0.8rem;
 }
 
 .title-game {
     font-family: 'Bungee Spice', sans-serif;
-    font-size: 4rem;
+    font-size: 3rem;
 }
 
 .score-counter {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: lighter;
     color: #CBE0DD;
 }
@@ -33,11 +30,14 @@ body {
 #game-board {
     margin: auto;
     position: relative;
-    width: calc((50px * 8) + 4px);
+    max-width: 350px;
+    width: 100%;
 }
 
 .sticker-stacker-grid-container {
-    width: calc((50px * 8) + 4px);
+    
+    max-width: 350px; 
+    width: calc((100% - 4px / 8));
     display: flex;
     flex-wrap: wrap;
     border: 2px solid black;
@@ -45,8 +45,8 @@ body {
 }
 
 .cell {
-    width: 50px;
-    height: 50px;
+    width: calc((100%) / 8);
+    aspect-ratio: 1/1;
 }
 
 .cell-dark {
@@ -61,10 +61,11 @@ body {
 
 .stack-btn-container {
     text-align: center;
+    width: 100%;
 }
 
 .stack-btn {
-    width: calc((50px * 8) + 4px);
+    width: calc((100% - 4px / 8));
     font-weight: bold;
     font-size: 1rem;
     cursor: pointer;
