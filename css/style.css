@@ -6,6 +6,7 @@
 
 body {
     height: 100vh;
+    max-width: 992px;
     padding: 1rem;
     background-color: #5296F5;
 }
@@ -30,9 +31,9 @@ body {
 }
 
 #game-board {
+    margin: auto;
     position: relative;
     width: calc((50px * 8) + 4px);
-    margin: auto;
 }
 
 .sticker-stacker-grid-container {

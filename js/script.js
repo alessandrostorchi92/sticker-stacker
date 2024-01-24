@@ -78,7 +78,7 @@ let timeSpeedBar = 1000;
 /**
  * @type {boolean}
  */
-let isVictory = false;
+let isGameEnd = false;
 
 // TODO: Implementation of the sticker stacker grid
 
@@ -126,7 +126,7 @@ function draw() {
 function moveBarRight(currentRow) {
     currentRow.pop();
     currentRow.unshift(0);
-    //? console.log(currentRow); OK!
+    console.log(currentRow);
 };
 
 /**
@@ -137,7 +137,7 @@ function moveBarRight(currentRow) {
 function moveBarLeft(currentRow) {
     currentRow.shift();
     currentRow.push(0);
-    //? console.log(currentRow); OK!
+    console.log(currentRow);
 };
 
 /**
@@ -189,12 +189,20 @@ function moveBar() {
     }
 };
 
+/**
+ * This function is the heart of the game loop and and mainly handles the movement of the orange bar and the updating of the grid display 
+ */
 function main() {
-    moveBar();
-    draw();
+    if (!isGameEnd) {
+        moveBar();
+        draw();
+    } else {
+        clearInterval(timer);
+    }
 };
 
 draw();
+
 timer = setInterval(main, timeSpeedBar);
 
 // TODO: Updating of the orange bar on the previous row of the sticker stacker grid and setting of victory and defeat conditions
@@ -220,6 +228,7 @@ function checkIfYouLost() {
         }
 
         if (barSize === 0) {
+            isGameEnd = true;
             clearInterval(timer);
             endGame(false);
         }
@@ -233,6 +242,7 @@ function checkIfYouLost() {
 function checkIfYouWon() {
 
     if (currentRowIndex === 0) {
+        isGameEnd = true;
         clearInterval(timer);
         endGame(true);
     }
@@ -251,14 +261,16 @@ function onStack() {
 
     checkIfYouWon();
 
+    if (isGameEnd) return;
+
     updateSpeedBar();
 
     updateScore();
-
+   
     //* Change row
     currentRowIndex--;
 
-    if (Array.isArray(gridMatrix[currentRowIndex])) {
+    if (currentRowIndex >= 0 && Array.isArray(gridMatrix[currentRowIndex])) {
         barDirection = "right";
 
         for (let i = 0; i < barSize; i++) {
@@ -267,6 +279,8 @@ function onStack() {
 
     }
 
+    draw(); 
+
 };
 
 stackBtn.addEventListener("click", onStack);
@@ -274,15 +288,11 @@ stackBtn.addEventListener("click", onStack);
 /**
  * This function sets up the speed of the orange bar every click on the stack button
  */
-function updateSpeedBar() {
-    clearInterval(timer);
-    timeSpeedBar -= 50;
-    timer = setInterval(main, timeSpeedBar);
-    //? console.log(timeSpeedBar); OK!
 
-    if (currentRowIndex === 0) {
-        clearInterval(timer);
-    }
+function updateSpeedBar() {
+    console.log(timeSpeedBar);
+    timeSpeedBar -= 50;
+    console.log(timeSpeedBar);
 }
 
 // TODO: Realisation of the score system
@@ -291,9 +301,13 @@ function updateSpeedBar() {
  * This function manages the score of the game
  */
 function updateScore() {
-    const maxTotalScore = document.querySelectorAll(".bar");
-    scoreCounter.innerText = maxTotalScore.length.toString().padStart(2, "0");
+    const totalOrangeBlocksCount = gridMatrix.reduce((total, row) => {
+        return total + row.filter(cell => cell === 1).length;
+    }, 0);
+
+    scoreCounter.innerText = totalOrangeBlocksCount.toString().padStart(2, "0");
 }
+
 
 // TODO: Realisation of the end game screens and the feature of the reload of the page
 
@@ -301,8 +315,8 @@ function updateScore() {
  * This function handles the apperance of the end game screens at the end of the game
  */
 
-function endGame(isVictory) {
-    if (isVictory) {
+function endGame(isGameEnd) {
+    if (isGameEnd) {
         endGameText.innerHTML = 'You<br>Win<br>🤩';
         endGameScreen.classList.add('end-game-screen');
     }
