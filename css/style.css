@@ -13,7 +13,7 @@ body {
 .score-container {
     text-align: center;
     width: 100%;
-    padding: 0.8rem;
+    padding: 1rem 0rem;
 }
 
 .title-game {
@@ -28,15 +28,15 @@ body {
 }
 
 #game-board {
-    margin: auto;
     position: relative;
     max-width: 350px;
     width: 100%;
+    padding: 0.8rem; 
+    margin: auto;
 }
 
 .sticker-stacker-grid-container {
-    
-    max-width: 350px; 
+    max-width: 350px;
     width: calc((100% - 4px / 8));
     display: flex;
     flex-wrap: wrap;
@@ -66,6 +66,7 @@ body {
 
 .stack-btn {
     width: calc((100% - 4px / 8));
+    height: 40px;
     font-weight: bold;
     font-size: 1rem;
     cursor: pointer;

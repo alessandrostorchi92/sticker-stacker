@@ -1,0 +1,117 @@
+@media screen and (min-width: 576px) {
+
+    .title-container {
+        margin-top: 2.5rem;
+    }
+
+    .title-game {
+        font-size: 3.2rem;
+    }
+
+    .score-counter {
+        font-size: 3rem;
+    }
+
+    #game-board {
+        max-width: 460px;
+    }
+
+    .sticker-stacker-grid-container {
+        max-width: 460px;
+    }
+
+    .stack-btn {
+        height: 45px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+  
+    .title-game {
+        font-size: 3.5rem;
+    }
+
+    .score-counter {
+        font-size: 3.2rem;
+    }
+
+    #game-board {
+        max-width: 520px;
+    }
+
+    .sticker-stacker-grid-container {
+        max-width: 520px;
+    }
+
+    .stack-btn {
+        height: 45px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+
+    .title-game {
+        font-size: 4.5rem;
+    }
+
+    .score-counter {
+        font-size: 4rem;
+    }
+
+    #game-board {
+        max-width: 680px;
+    }
+
+    .sticker-stacker-grid-container {
+        max-width: 680px;
+    }
+
+    .stack-btn {
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .end-game-text {
+        font-size: 6rem; 
+    }
+
+    .play-again-btn {
+        font-size: 1.5rem;
+        width: 15rem;
+        height: 60px; 
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .title-game {
+        font-size: 5rem;
+    }
+
+    .score-counter {
+        font-size: 4.2rem;
+    }
+
+    #game-board {
+        max-width: 680px;
+    }
+
+    .sticker-stacker-grid-container {
+        max-width: 720px;
+    }
+
+    .stack-btn {
+        height: 65px;
+        font-size: 1.5rem;
+    }
+
+    .end-game-text {
+        font-size: 6rem; 
+    }
+
+    .play-again-btn {
+        font-size: 1.5rem;
+        width: 15rem;
+        height: 60px; 
+    }
+}
+
