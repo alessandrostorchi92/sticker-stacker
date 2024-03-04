@@ -193,12 +193,8 @@ function moveBar() {
  * This function is the heart of the game loop and and mainly handles the movement of the orange bar and the updating of the grid display 
  */
 function main() {
-    if (!isGameEnd) {
-        moveBar();
-        draw();
-    } else {
-        clearInterval(timer);
-    }
+    moveBar();
+    draw();
 };
 
 draw();
@@ -266,11 +262,11 @@ function onStack() {
     updateSpeedBar();
 
     updateScore();
-   
+
     //* Change row
     currentRowIndex--;
 
-    if (currentRowIndex >= 0 && Array.isArray(gridMatrix[currentRowIndex])) {
+    if (currentRowIndex >= 0) {
         barDirection = "right";
 
         for (let i = 0; i < barSize; i++) {
@@ -279,7 +275,7 @@ function onStack() {
 
     }
 
-    draw(); 
+    draw();
 
 };
 
@@ -292,6 +288,9 @@ stackBtn.addEventListener("click", onStack);
 function updateSpeedBar() {
     console.log(timeSpeedBar);
     timeSpeedBar -= 50;
+    // Restartig of timer with the new speed
+    clearInterval(timer);
+    timer = setInterval(main, timeSpeedBar);
     console.log(timeSpeedBar);
 }
 
