@@ -287,10 +287,12 @@ stackBtn.addEventListener("click", onStack);
 
 function updateSpeedBar() {
     console.log(timeSpeedBar);
-    timeSpeedBar -= 50;
+
     // Restartig of timer with the new speed
+    timeSpeedBar -= 50;
     clearInterval(timer);
     timer = setInterval(main, timeSpeedBar);
+
     console.log(timeSpeedBar);
 }
 
